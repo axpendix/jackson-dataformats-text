@@ -106,4 +106,15 @@
     </plugins>
   </build>
 
+    <distributionManagement>
+        <repository>
+            <id>tcgone-deploy</id>
+            <url>https://mymavenrepo.com/repo/C1jsVEzkZyjwQzTKAIkU/</url>
+        </repository>
+        <snapshotRepository>
+            <id>tcgone-deploy</id>
+            <url>https://mymavenrepo.com/repo/C1jsVEzkZyjwQzTKAIkU/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>
