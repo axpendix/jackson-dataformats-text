@@ -138,6 +138,15 @@ public class YAMLGenerator extends GeneratorBase
          * @since 2.9.6
          */
         USE_PLATFORM_LINE_BREAKS(false),
+
+        /**
+         * Option to use single quotes in exported YAML.
+         *
+         * Default value is {@code false} for backwards compatibility.
+         *
+         * @since 2.13
+         */
+        USE_SINGLE_QUOTES(false),
         ;
 
         protected final boolean _defaultState;
@@ -203,13 +212,14 @@ public class YAMLGenerator extends GeneratorBase
 
     protected final org.yaml.snakeyaml.DumperOptions.Version _docVersion;
 
+    // Strings quoted for fun
+    private final DumperOptions.ScalarStyle STYLE_QUOTED;
+
     // for field names, leave out quotes
     private final static DumperOptions.ScalarStyle STYLE_UNQUOTED_NAME = DumperOptions.ScalarStyle.PLAIN;
 
     // numbers, booleans, should use implicit
     private final static DumperOptions.ScalarStyle STYLE_SCALAR = DumperOptions.ScalarStyle.PLAIN;
-    // Strings quoted for fun
-    private final static DumperOptions.ScalarStyle STYLE_QUOTED = DumperOptions.ScalarStyle.DOUBLE_QUOTED;
     // Strings in literal (block) style
     private final static DumperOptions.ScalarStyle STYLE_LITERAL = DumperOptions.ScalarStyle.LITERAL;
 
@@ -267,6 +277,9 @@ public class YAMLGenerator extends GeneratorBase
             ? NodeStyleResolver.DEFAULT_INSTANCE : nodeStyleResolver;
         _writer = out;
         _docVersion = version;
+        STYLE_QUOTED = Feature.USE_SINGLE_QUOTES.enabledIn(_formatFeatures) ?
+                DumperOptions.ScalarStyle.SINGLE_QUOTED :
+                DumperOptions.ScalarStyle.DOUBLE_QUOTED;
 
         _outputOptions = buildDumperOptions(jsonFeatures, yamlFeatures, version);
 
