@@ -1,2 +1,2 @@
 deploy:
-	mvn clean install jar:jar org.apache.maven.plugins:maven-deploy-plugin:deploy
+	mvn clean install org.apache.maven.plugins:maven-deploy-plugin:deploy
