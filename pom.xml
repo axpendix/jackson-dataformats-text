@@ -106,14 +106,16 @@
     </plugins>
   </build>
 
+    <!-- GitHub Packages of axpendix/tcgone (tcgone's CI token can only read that repo's packages); credentials: server
+         "github" in ~/.m2/settings.xml, GITHUB_TOKEN = classic token with write:packages (make deploy takes gh auth token) -->
     <distributionManagement>
         <repository>
-            <id>tcgone-deploy</id>
-            <url>https://mymavenrepo.com/repo/C1jsVEzkZyjwQzTKAIkU/</url>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/axpendix/tcgone</url>
         </repository>
         <snapshotRepository>
-            <id>tcgone-deploy</id>
-            <url>https://mymavenrepo.com/repo/C1jsVEzkZyjwQzTKAIkU/</url>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/axpendix/tcgone</url>
         </snapshotRepository>
     </distributionManagement>
 
